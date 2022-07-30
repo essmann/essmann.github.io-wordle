@@ -1,0 +1,76 @@
+body{
+  
+}
+.container{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(6,100px);
+    justify-content: center;
+    align-content: center;
+    
+    
+    
+}
+.tile{
+    border: 1px solid black;
+    text-align: center;
+    font-size: xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+.keyboard{
+    display: grid;
+    grid-template-columns: repeat(9,100px);
+    grid-template-rows: repeat(4,50px);
+    justify-content: center;
+    margin-top: 50px;
+
+
+}
+
+.letter{
+    border: 1px solid black;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#DEL{
+    grid-row-start: 4;
+    grid-column-start: 8;
+    grid-column-end: 10;
+}
+
+
+.letter:hover{
+    background: lightblue;
+}
+
+#correct{
+    background: green;
+}
+#incorrect{
+    background: red;
+}
+
+#incorrectOrder{
+    background: orange;
+}
+
+#correctLetter{
+    
+    background: green;
+}
+#incorrectLetter{
+    pointer-events: none;
+    background: rgb(121, 40, 40);
+}
+
+
+
+#incorrectLetters:hover{
+    cursor: not-allowed;
+}
