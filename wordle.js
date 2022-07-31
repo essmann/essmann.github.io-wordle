@@ -4,6 +4,7 @@
 
 const tiles = document.querySelectorAll(".tile");
 const letters = document.querySelectorAll(".letter");
+var canPlay = true;
 var inputLetters = [];
 var wordCombination = [];
 var inputLetterIndex = 0;
@@ -28,23 +29,45 @@ var tileIndex = 0; // goes through all indices of the entire grid iterates for e
 letters.forEach((Letter)=>{
     Letter.addEventListener("click", (key)=>{
         const letter = key.target.innerHTML;
-        if(letter!=="ENTER"&&letter!=="DEL"&&inputLetters.length<5){
+        if(letter!=="ENTER"&&letter!=="DEL"&&inputLetters.length<5&canPlay){
             inputLetters.push(letter);
             addLetter(inputLetterIndex,letter);
             inputLetterIndex++;
             tileIndex++;
         }
-        if(letter=="DEL"&&inputLetters.length>0){
+        if(letter=="DEL"&&inputLetters.length>0&canPlay){
             inputLetterIndex--;
             tileIndex--;
             removeLetter(inputLetterIndex);
             inputLetters.pop();
         }
         console.log(inputLetters);
-        if(letter=="ENTER"&&inputLetters.length==5){
+        if(letter=="ENTER"&&inputLetters.length==5&canPlay){
             addWord();
         }
     })
+})
+let Illegalkeys = ["Control","AltGraph","Alt","Escape","1","2","3","4","5","6","7","8","9","0","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","\\","+","-","=","?","@"];
+
+document.body.addEventListener("keydown",(key)=>{
+    console.log(key);
+    let letter = key.key;
+    if(!Illegalkeys.includes(letter)&&letter!=="Enter"&&letter!=="Backspace"&&inputLetters.length<5&&canPlay){
+        inputLetters.push(letter.toUpperCase());
+        addLetter(inputLetterIndex,letter.toUpperCase());
+        inputLetterIndex++;
+        tileIndex++;
+    }
+    if(letter=="Backspace"&&inputLetters.length>0&canPlay){
+            inputLetterIndex--;
+            tileIndex--;
+            removeLetter(inputLetterIndex);
+            inputLetters.pop();
+    }
+    if(letter=="Enter"&&inputLetters.length==5&canPlay){
+        addWord();
+    }
+    
 })
 
 function addLetter(index,letter){
@@ -114,7 +137,7 @@ function removeKeyboardLetter(){
         letters.forEach((letter)=>{
             if(incorrectWords[i]==letter.innerHTML){
                 letter.id = "incorrectLetter"
-                letter.innerHTML = null;
+                
             }
         })
     }
@@ -131,21 +154,12 @@ function removeKeyboardLetter(){
 
 function checkWin(){
     if(correctWords.join("")==WORD){
-        resetGame("win");
+        canPlay = false;
     }
     else{
         if(rowIndex==6){
-            resetGame("lost")
+            canPlay = false;
         }
     }
 }
 
-function resetGame(gameState){
-    if(gameState == "win"){
-        alert("you're a god. ctrl + r to go again.")
-    }
-    else{
-        alert("you suck bro. ctrl + r to go again.")
-        
-    }
-}
