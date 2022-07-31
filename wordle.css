@@ -1,11 +1,28 @@
 body{
-  
+  background: rgb(255, 255, 255);
+}
+h1{
+    text-align: center;
+    text-shadow: 1px 1px 1px #131413,
+        1px 2px 1px #131212,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 6px 1px #919191,
+        1px 7px 1px #919191,
+        1px 8px 1px #919191,
+        1px 9px 1px #919191,
+        1px 10px 1px #919191,
+    1px 18px 6px rgba(32, 28, 28, 0.4),
+    1px 22px 10px rgba(141, 34, 34, 0.2),
+    1px 25px 35px rgba(24, 21, 21, 0.2),
+    1px 30px 60px rgba(22, 20, 20, 0.4);
 }
 .container{
-    border: 1px solid black;
+   
     display: grid;
-    grid-template-columns: repeat(5, 100px);
-    grid-template-rows: repeat(6,100px);
+    grid-template-columns: repeat(5, 70px);
+    grid-template-rows: repeat(6,70px);
     justify-content: center;
     align-content: center;
     
@@ -17,15 +34,18 @@ body{
     text-align: center;
     font-size: xx-large;
     font-family: 'Courier New', Courier, monospace;
+    border-radius: 7px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
     
 }
 
 .keyboard{
     display: grid;
-    grid-template-columns: repeat(9,100px);
-    grid-template-rows: repeat(4,50px);
+    grid-template-columns: repeat(9,70px);
+    grid-template-rows: repeat(4,40px);
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 5px;
 
 
 }
@@ -36,6 +56,8 @@ body{
     font-family: 'Courier New', Courier, monospace;
     font-size: x-large;
     font-weight: bold;
+    border-radius: 7px;
+    
 }
 
 #DEL{
@@ -46,31 +68,41 @@ body{
 
 
 .letter:hover{
-    background: lightblue;
+    background: rgb(205, 209, 211);
+    
 }
 
 #correct{
-    background: green;
+    background: rgb(79, 190, 79);
+    transform: rotateY(360deg);
 }
 #incorrect{
-    background: red;
+    background: rgb(212, 84, 84);
+    
+    
+    transform: rotateY(360deg);
+    
+    
 }
 
 #incorrectOrder{
-    background: orange;
+    background: rgb(224, 166, 58);
+    transform: rotateY(360deg);
 }
 
 #correctLetter{
     
-    background: green;
+    background: rgb(79, 190, 79);
 }
 #incorrectLetter{
-    pointer-events: none;
-    background: rgb(121, 40, 40);
+    
+    background:  rgb(212, 84, 84);
+    
 }
 
 
 
 #incorrectLetters:hover{
-    cursor: not-allowed;
+    
 }
+
