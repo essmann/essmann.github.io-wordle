@@ -153,7 +153,7 @@ function removeKeyboardLetter(){
 }
 
 function checkWin(){
-    if(correctWords.join("")==WORD){
+    if(inputLetters.join("")==WORD){
         canPlay = false;
     }
     else{
